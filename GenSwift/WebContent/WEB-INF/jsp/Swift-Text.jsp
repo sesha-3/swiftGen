@@ -6,86 +6,56 @@
       
   <script>
 
-  function update(e) {
-	    var v=e.value;
-	    var url="coText.jsp?val="+e.id;
+	function update(e){
+	    //var v=e.value;
+	    var url="../coindex.jsp?msg=1&val="+e.id;
+	    if(e.id == "22Fcode"){
+		    var url = "../coindex.jsp?msg=1&val=22F&flag=1";
+		    }
+	
 	    request=new XMLHttpRequest();
-        request.open("GET",url,true);
-        request.send();
-	    var sel = document.getElementById(e.id);
-        while (sel.hasChildNodes()) {  
-            sel.removeChild(sel.firstChild);
-        }
-	    var opt = document.createElement("option");
-        opt.text = "Select any one";
-        sel.add(opt);
-
+	
 	    try {
-	    	if(e.id == "23G"){
-				request.onreadystatechange=function(){
-			         for(i in val){
-			             var option = document.createElement("option");
-			             option.text = val[i].bank_name;
-			             sel.add(option);
-			            }
-					};
-			}
-			if(e.id == "22Fqual"){
-				request.onreadystatechange=function(){
-			         for(i in val){
-			             var option = document.createElement("option");
-			             option.text = val[i].bank_name;
-			             sel.add(option);
-			            }
-					};
-			}
-			if(e.id == "22Fcode"){
-				request.onreadystatechange=function(){
-			         for(i in val){
-			             var option = document.createElement("option");
-			             option.text = val[i].bank_name;
-			             sel.add(option);
-			            }
-					};
-			}
-			if(e.id == "95A"){
-				request.onreadystatechange=function(){
-			         for(i in val){
-			             var option = document.createElement("option");
-			             option.text = val[i].bank_name;
-			             sel.add(option);
-			            }
-					};
-			}
-
+	        request.onreadystatechange=getInfo(e.id);
+	        request.open("GET",url,true);
+	        request.send();
 	    }
 	    catch(e) {
 	        alert("Unable to connect to server");
 	    }
-	    //getInfo();
 	}
-
-	function getInfo() {
-	    if(request.readyState==4){
-	        var val = JSON.parse(request.responseText);
-	        var i;
-	        var sel = document.getElementById('23G');
-	        var sel1 = document.getElementById('22Fqual');
-	        var sel2 = document.getElementById('22Fcode');
-	        var sel3 = document.getElementById('95A');
-	         for(i in val){
+	
+	function getInfo(e){
+		//alert(e);
+	    var sel = document.getElementById(e);
+	    while (sel.hasChildNodes()) {  
+	        sel.removeChild(sel.firstChild);
+	    }
+	    var opt = document.createElement("option");
+	    opt.text = "Select any one";
+	    sel.add(opt);
+	    //alert("in dad");
+		if(request.readyState==4){
+			alert("in d");
+			var val = JSON.parse(request.responseText);
+			var i;
+	        for(i in val){
+		        alert("in for");
 	            var option = document.createElement("option");
-	            var option1 = document.createElement("option");
-	            var option2 = document.createElement("option");
-	            var option3 = document.createElement("option");
-	            option1.text = val[i].country_name;
+	            if(e.equals("22Fcode")){
+	                option.text = val[i].code;
+                	alert(e);
+	            }
+	            else{
+	                option.text = val[i].qualifier;
+	                alert(e);
+	                alert(option.text);
+	            }
 	            
 	            sel.add(option);
-	            sel1.add(option1);
-	            sel2.add(option2);
-	            sel3.add(option3);
 	           }
-	    }
+		}
+		//alert("in mom");
 	}
   </script>
 
@@ -118,7 +88,7 @@
 </div> -->
 
 <div class="img2">
-	<img id="image" src="../../resources/scblogo.jpg" />
+	<img id="image" src="../resources/scblogo.jpg" />
 </div>
 
 <div class="formText">
@@ -128,17 +98,17 @@
 	    <table>
 	      <tr>
 	        <td><label for="20C">Sender Message Reference</label></td>
-	        <td><input id="20C" type="text" name="20C"><br/></td>
+	        <td><input id="20C" type="text" name="20C" required><br/></td>
 	      </tr>
 	      <tr>
 	        <td> <label for="23G"> Function of Message   </label><br/> </td>
-	         <td>  <select name="23G" id="23" onload="update(this)">
+	         <td>  <select name="23G" id="23G" onclick="update(this)" required>
 	        <option value="">Function</option>
 	        </select> </td>
 	      </tr>
 	      <tr>
 	        <td>  <label for="98C"> Date Preparation   </label><br/></td>
-	        <td >   <input id="98C" type="date" name="98C"><br/> </td>
+	        <td >   <input id="98C" type="date" name="98C" required><br/> </td>
 	      </tr>
 	    </table>
 	  </fieldset>
@@ -148,11 +118,11 @@
 	      <table>
 	        <tr>
 	          <td>  <label for="98A">Settlement Date </label> </td>
-	          <td >   <input id="98A" type="date" name="98A"><br/> </td>
+	          <td >   <input id="98A" type="date" name="98A" required><br/> </td>
 	        </tr>
 			<tr>
 	          <td>  <label for="35B">Identification of Security </label> </td>
-	          <td >   <input id="35B" type="text" name="35B"><br/> </td>
+	          <td >   <input id="35B" type="text" name="35B" required><br/> </td>
 	        </tr>
 	      </table>
 	</fieldset>
@@ -162,11 +132,11 @@
 	      <table>
 	        <tr>
 	          <td>  <label for="36B">Quantity to be Settled </label> </td>
-	          <td >   <input id="36B" type="text" name="36B"><br/> </td>
+	          <td >   <input id="36B" type="text" name="36B" required><br/> </td>
 	        </tr>
 			<tr>
 	          <td>  <label for="97A">Account </label> </td>
-	          <td >   <input id="97A" type="text" name="97A"><br/> </td>
+	          <td >   <input id="97A" type="text" name="97A" required><br/> </td>
 	        </tr>
 	      </table>
 	</fieldset>
@@ -176,10 +146,10 @@
 	      <table>
 	        <tr>
 	          <td>  <label for="22F">Indicator</label> </td>
-	           <td>  <select id = "22" name = "22Fqual" onload="update(this)">
+	           <td>  <select id = "22F" name = "22Fqual" onclick="update(this)" required>
 	        <option value="">Qualifier</option>
 	        </select> </td>
-			 <td>  <select id = "22Fcode" name = "22Fcode" onload="update(this)">
+			 <td>  <select id = "22Fcode" name = "22Fcode" onclick="update(this)" required>
 	        <option value="">Code</option>
 	        </select> </td>
 	      </table>
@@ -190,11 +160,11 @@
 	      <table>
 	        <tr>
 	          <td>  <label for="95A">Party</label> </td>
-	           <td>  <select id = "95" name = "95A" onload="update(this)">
+	           <td>  <select id = "95A" name = "95A" onclick="update(this)" required>
 	        <option value="">Party</option>
 	        </select> 
 			</td>
-			<td >   <input type="text" name="partyval"><br/> </td>
+			<td >   <input type="text" name="partyval" required><br/> </td>
 	        </tr>
 	      </table>
 	</fieldset>
