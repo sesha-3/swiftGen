@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+E:\Swift_Message_Generator\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2084398441.index
+4029180347.index
+2057164397.index
+648760131.index
+282444997.index
+1862021360.index
+1397925900.index

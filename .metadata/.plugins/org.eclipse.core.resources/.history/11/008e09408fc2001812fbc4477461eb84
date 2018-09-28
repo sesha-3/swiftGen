@@ -1,0 +1,207 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>SwiftText</title>
+      <link rel="stylesheet" href="../resources/style/style.css">
+      
+  <script>
+
+  function update(e) {
+	    var v=e.value;
+	    var url="coText.jsp?val="+val+"&type="+e.id;
+	    request=new XMLHttpRequest();
+        request.open("GET",url,true);
+        request.send();
+	    var sel = document.getElementById(e.id);
+        while (sel.hasChildNodes()) {  
+            sel.removeChild(sel.firstChild);
+        }
+	    var opt = document.createElement("option");
+        opt.text = "Select any one";
+        sel.add(opt);
+
+	    try {
+	    	if(e.id == "23G"){
+				request.onreadystatechange=function({
+			         for(i in val){
+			             var option = document.createElement("option");
+			             option.text = val[i].bank_name;
+			             sel.add(option);
+			            }
+					});
+			}
+			if(e.id == "22Fqual"){
+				request.onreadystatechange=function({
+			         for(i in val){
+			             var option = document.createElement("option");
+			             option.text = val[i].bank_name;
+			             sel.add(option);
+			            }
+					});
+			}
+			if(e.id == "22Fcode"){
+				request.onreadystatechange=function({
+			         for(i in val){
+			             var option = document.createElement("option");
+			             option.text = val[i].bank_name;
+			             sel.add(option);
+			            }
+					});
+			}
+			if(e.id == "95A"){
+				request.onreadystatechange=function({
+			         for(i in val){
+			             var option = document.createElement("option");
+			             option.text = val[i].bank_name;
+			             sel.add(option);
+			            }
+					});
+			}
+
+	    }
+	    catch(e) {
+	        alert("Unable to connect to server");
+	    }
+	    //getInfo();
+	}
+
+	function getInfo() {
+	    if(request.readyState==4){
+	        var val = JSON.parse(request.responseText);
+	        var i;
+	        var sel = document.getElementById('23G');
+	        var sel1 = document.getElementById('22Fqual');
+	        var sel2 = document.getElementById('22Fcode');
+	        var sel3 = document.getElementById('95A');
+	         for(i in val){
+	            var option = document.createElement("option");
+	            var option1 = document.createElement("option");
+	            var option2 = document.createElement("option");
+	            var option3 = document.createElement("option");
+	            option1.text = val[i].country_name;
+	            
+	            sel.add(option);
+	            sel1.add(option1);
+	            sel2.add(option2);
+	            sel3.add(option3);
+	           }
+	    }
+	}
+  </script>
+
+</head>
+<body>
+<div class="container">
+	<div class="bird-container bird-container--one">
+		<div class="bird bird--one"></div>
+	</div>
+	
+	<div class="bird-container bird-container--two">
+		<div class="bird bird--two"></div>
+	</div>
+	
+	<div class="bird-container bird-container--three">
+		<div class="bird bird--three"></div>
+	</div>
+	
+	<div class="bird-container bird-container--four">
+		<div class="bird bird--four"></div>
+	</div>
+  <div class="bird-container bird-container--five">
+		<div class="bird bird--five"></div>
+	</div>
+	
+</div>
+
+<!-- <div class="imagText">
+	<img id="i" src="resources/white.jpg" />
+</div> -->
+
+<div class="img2">
+	<img id="image" src="../../resources/scblogo.jpg" />
+</div>
+
+<div class="formText">
+<fieldset name="name" >
+  <legend style="text-align:center"><strong>General Information</strong></legend>
+    <table>
+      <tr>
+        <td><label for="20C">Sender Message Reference</label></td>
+        <td><input id="20C" type="text" name="20C"><br/></td>
+      </tr>
+      <tr>
+        <td> <label for="23G"> Function of Message   </label><br/> </td>
+         <td>  <select name="23G" id="23G" onload="update()">
+        <option value="">Function</option>
+        </select> </td>
+      </tr>
+      <tr>
+        <td>  <label for="98C"> Date Preparation   </label><br/></td>
+        <td >   <input id="98C" type="date" name="98C"><br/> </td>
+      </tr>
+    </table>
+  </fieldset>
+  <br>
+  <fieldset >
+    <legend style="text-align:center"><strong>Trade Details</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="98A">Settlement Date </label> </td>
+          <td >   <input id="98A" type="date" name="98A"><br/> </td>
+        </tr>
+		<tr>
+          <td>  <label for="35B">Identification of Security </label> </td>
+          <td >   <input id="35B" type="text" name="35B"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Financial</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="36B">Quantity to be Settled </label> </td>
+          <td >   <input id="36B" type="text" name="36B"><br/> </td>
+        </tr>
+		<tr>
+          <td>  <label for="97A">Account </label> </td>
+          <td >   <input id="97A" type="text" name="97A"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Settlement Details</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="22F">Indicator</label> </td>
+           <td>  <select id = "22Fqual" name = "22Fqual" onload="update()">
+        <option value="">Qualifier</option>
+        </select> </td>
+		 <td>  <select id = "22Fcode" name = "22Fcode" onload="update()">
+        <option value="">Code</option>
+        </select> </td>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Settlement Party</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="95A">Party</label> </td>
+           <td>  <select id = "95A" name = "95A" onload="update()">
+        <option value="">Party</option>
+        </select> 
+		</td>
+		<td >   <input type="text" name="amount"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br/>
+<div class="wrapper" >
+<input type="submit"  value="SUBMIT" />
+</div>
+</div>
+
+</body>
+</html>

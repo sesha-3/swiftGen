@@ -1,0 +1,9 @@
+
+}squid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô«Óäıÿÿÿÿ8§ËÙÓß,H’	
+Osquid:S2140")Use "java.util.Random.nextInt()" instead.(¹ĞÃøÿÿÿÿ8§ËÙÓß,H•	
+†squid:S1488"`Immediately return this expression instead of assigning it to the temporary variable "finalStr".(°¬Ç·úÿÿÿÿ8§ËÙÓß,H‘	
+Osquid:S2140")Use "java.util.Random.nextInt()" instead.(¹ĞÃøÿÿÿÿ8§ËÙÓß,H“	
+†squid:S1488."`Immediately return this expression instead of assigning it to the temporary variable "finalStr".(Ìß™ğşÿÿÿÿ8ªŒÇÕß,H”	
+wsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òüİL8§ËÙÓß,H–	
+†squid:S1488!"`Immediately return this expression instead of assigning it to the temporary variable "finalStr".(°¬Ç·úÿÿÿÿ8Ô–àÓß,H	
+squid:S1488("`Immediately return this expression instead of assigning it to the temporary variable "finalStr".(†Õ€ç8şµ²Õß,H	

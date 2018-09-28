@@ -1,0 +1,36 @@
+package com.swift.controller;
+
+import java.util.Random;
+
+public class AutoGenString {
+	
+	int length;
+	AutoGenString(int sLength){
+		this.length = sLength;
+	}
+
+	
+	protected String generateString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder str = new StringBuilder();
+        Random rnd = new Random();
+        while (str.length() < this.length) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            str.append(SALTCHARS.charAt(index));
+        }
+        String finalStr = str.toString();
+        return finalStr;
+    }
+	protected String generateNumber() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < this.length) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+}

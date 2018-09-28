@@ -1,0 +1,166 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>SwiftText</title>
+      <link rel="stylesheet" href="../resources/style/style.css">
+      
+  <script>
+
+  function sendInfo() {
+	    //var v=document.country.id;
+	    var url="coText.jsp";
+
+	    if(window.XMLHttpRequest){
+	        request=new XMLHttpRequest();
+	    }
+	    try {
+	        request.onreadystatechange=getInfo;
+	        request.open("GET",url,true);
+	        request.send();
+	    }
+	    catch(e) {
+	        alert("Unable to connect to server");
+	    }
+	    //getInfo();
+	}
+
+	function getInfo() {
+	    if(request.readyState==4){
+	        var val = JSON.parse(request.responseText);
+	        var i;
+	        var sel = document.getElementById('23G');
+	        var sel1 = document.getElementById('22Fqual');
+	        var sel2 = document.getElementById('23Fcode');
+	        var sel3 = document.getElementById('95A');
+	         for(i in val){
+	            var option = document.createElement("option");
+	            var option1 = document.createElement("option");
+	            var option2 = document.createElement("option");
+	            var option3 = document.createElement("option");
+	            option.text = val[i].country_name;
+	            
+	            sel.add(option);
+	            sel1.add(option1);
+	            sel2.add(option2);
+	            sel3.add(option3);
+	           }
+	    }
+	}
+  </script>
+
+</head>
+<body>
+<div class="container">
+	<div class="bird-container bird-container--one">
+		<div class="bird bird--one"></div>
+	</div>
+	
+	<div class="bird-container bird-container--two">
+		<div class="bird bird--two"></div>
+	</div>
+	
+	<div class="bird-container bird-container--three">
+		<div class="bird bird--three"></div>
+	</div>
+	
+	<div class="bird-container bird-container--four">
+		<div class="bird bird--four"></div>
+	</div>
+  <div class="bird-container bird-container--five">
+		<div class="bird bird--five"></div>
+	</div>
+	
+</div>
+
+<!-- <div class="imagText">
+	<img id="i" src="resources/white.jpg" />
+</div> -->
+
+<div class="img2">
+	<img id="image" src="../../resources/scblogo.jpg" />
+</div>
+
+<div class="formText">
+<fieldset name="name" >
+  <legend style="text-align:center"><strong>General Information</strong></legend>
+    <table>
+      <tr>
+        <td><label for="20C">Sender Message Reference</label></td>
+        <td><input id="20C" type="text" name="20C"><br/></td>
+      </tr>
+      <tr>
+        <td> <label for="23G"> Function of Message   </label><br/> </td>
+         <td>  <select name="23G" id="23G">
+        <option value="">f</option>
+        </select> </td>
+      </tr>
+      <tr>
+        <td>  <label for="98C"> Date Preparation   </label><br/></td>
+        <td >   <input id="98C" type="date" name="98C"><br/> </td>
+      </tr>
+    </table>
+  </fieldset>
+  <br>
+  <fieldset >
+    <legend style="text-align:center"><strong>Trade Details</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="98A">Settlement Date </label> </td>
+          <td >   <input id="98A" type="date" name="98A"><br/> </td>
+        </tr>
+		<tr>
+          <td>  <label for="35B">Identification of Security </label> </td>
+          <td >   <input id="35B" type="text" name="35B"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Financial</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="36B">Quantity to be Settled </label> </td>
+          <td >   <input id="36B" type="text" name="36B"><br/> </td>
+        </tr>
+		<tr>
+          <td>  <label for="97A">Account </label> </td>
+          <td >   <input id="97A" type="text" name="97A"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Settlement Details</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="22F">Indicator</label> </td>
+           <td>  <select id = "22Fqual" name = "22Fqual">
+        <option value="">f</option>
+        </select> </td>
+		 <td>  <select id = "22Fcode" name = "22Fcode">
+        <option value="">f</option>
+        </select> </td>
+      </table>
+</fieldset>
+<br>
+<fieldset >
+    <legend style="text-align:center"><strong>Settlement Party</strong></legend>
+      <table>
+        <tr>
+          <td>  <label for="95A">Party</label> </td>
+           <td>  <select id = "95A" name = "95A">
+        <option value="">f</option>
+        </select> 
+		</td>
+		<td >   <input type="text" name="amount"><br/> </td>
+        </tr>
+      </table>
+</fieldset>
+<br/>
+<div class="wrapper" >
+<input type="submit"  value="SUBMIT" />
+</div>
+</div>
+
+</body>
+</html>

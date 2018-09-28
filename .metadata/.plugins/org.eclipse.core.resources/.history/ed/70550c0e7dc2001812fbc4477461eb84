@@ -1,0 +1,102 @@
+/**
+ * The main controller is here.
+ */
+package com.swift.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.portlet.ModelAndView;
+
+/**
+ * @author int-Elligence
+ *
+ */
+
+@Controller
+@RequestMapping("/")
+public class SwiftController {
+	
+	@Autowired
+	AutoGenString gen = new AutoGenString();
+	
+	String basic_header = "{1:";
+	String user_header = "{2:";
+	String app_header = "{3:";
+	String text_block = "{4:\n-}";
+	String trailer_block = "{5:";
+
+	@RequestMapping(value="/Swift-Text",
+            method=RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	
+	ModelAndView generateHeader(@RequestBody MultiValueMap<String,String> formData){
+		
+		String swiftcode = formData.getFirst("swiftcode");
+		String Swiftcode = formData.getFirst("Swiftcode");
+		ModelAndView mav = new ModelAndView();
+		System.out.println(swiftcode);
+		System.out.println(Swiftcode);
+		/*//BasicHeaderBlock starts here
+		String session_number = gen.generateNumber(4);
+		String sequence_number = gen.generateNumber(6);
+		
+		basic_header = basic_header + "F01" + swiftcode + session_number + sequence_number + "}";
+		//BasicHeaderBlock ends here
+		
+		//ApplicationHeaderBlock starts here
+		//NOTE:: HAVE TO ADD LogicalTerminalCode (X/Z) to SWIFT_CODE
+		String itime = gen.generateTime();
+		String idate = gen.generateDate();
+		String otime = gen.generateTime();
+		String odate = gen.generateDate();
+		String app_type = formData.getFirst("direction");
+		String MT = formData.getFirst("MT");
+		String priority = formData.getFirst("msgPriority");
+		if(app_type.equals("I")) {
+			app_header = app_header + app_type + MT + Swiftcode + priority +"3003}";
+		}
+		else {
+			app_header = app_header + app_type + MT + itime + idate
+									+ Swiftcode + odate + otime + priority +"}";
+		}
+		//ApplicationHeaderBlock ends here
+		
+		//UserHeaderBlock starts here
+		String MUR = gen.generateString(16);
+		user_header = user_header + "{113:SEPA}{108:"+MUR+"}}";
+		//UserHeaderBlock ends here
+		
+		
+		
+		//TrailerBlock starts here
+		String chksum = gen.generateString(12);
+		trailer_block = trailer_block + "{CHK:" + chksum + "}}";
+		//TrailerBlock ends here
+		
+		System.out.print(basic_header + app_header);
+		System.out.print(user_header);
+		System.out.print(text_block);
+		System.out.print(trailer_block);*/
+		mav.setViewName("Swift-Text");
+		return mav;
+	}
+
+	@RequestMapping(value="/Swift-Output",
+            method=RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	
+	ModelAndView generateBody(@RequestBody MultiValueMap<String,String> formData){
+		
+		ModelAndView mav = new ModelAndView();
+		
+		
+		return mav;
+		
+	}
+	
+}

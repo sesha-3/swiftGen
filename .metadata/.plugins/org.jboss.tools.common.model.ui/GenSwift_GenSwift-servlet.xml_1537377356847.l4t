@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout resource="/GenSwift/WebContent/WEB-INF/GenSwift-servlet.xml">
+ <TreeFormPage>
+  <Memento type="FileCDIBeans11">
+   <Memento collapsed="false" type="Cdi Beans"/>
+  </Memento>
+  <Memento type="">
+   <Memento type="Properties Editor"/>
+  </Memento>
+ </TreeFormPage>
+</Layout>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>SwiftIndex</title>
+  
+  
+  
+      <link rel="stylesheet" href="style/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class="container">
+	<div class="bird-container bird-container--one">
+		<div class="bird bird--one"></div>
+	</div>
+	
+	<div class="bird-container bird-container--two">
+		<div class="bird bird--two"></div>
+	</div>
+	
+	<div class="bird-container bird-container--three">
+		<div class="bird bird--three"></div>
+	</div>
+	
+	<div class="bird-container bird-container--four">
+		<div class="bird bird--four"></div>
+	</div>
+  <div class="bird-container bird-container--five">
+		<div class="bird bird--five"></div>
+	</div>
+	
+</div>
+
+<div class="imag">
+	<img id="im" src="style/white.jpg" />
+</div>
+<div class="img2">
+	<img id="image" src="style/scb.jpg" />
+</div>
+
+<div class="form">
+	<fieldset>
+		<legend style="text-align:center"><strong>Sender Details</strong></legend>
+		<table align="center">
+			<tr>
+				<td><label for="sendBank">Bank Name</label></td>
+				<td><input type="text" name="accoutno"></td>
+			</tr>
+			<tr>
+				<td> <label for="SCountryName">Country Name </label></td>
+				<td >   <input type="text" name="amount"></td>
+			</tr>
+			<tr>
+				<td>  <label for="SCityName">City</label></td>
+				<td>  <select>
+					<option value="">f</option>
+					</select>  </td>
+			</tr>
+				
+			<tr>
+				<td>  <label for="SBranch"> Branch   </label></td>
+				<td>  <select>
+				<option value="">f</option>
+				</select> </td>
+			</tr>
+		</table>
+	</fieldset>
+ <br>
+ <fieldset>
+	<legend style="text-align:center"><strong>Application Details</strong></legend>
+	<table align="center">
+		<tr>
+			<td><label for="Branch">Option</label></td>
+			<td><select class="dropdown">
+			<option>Select</option>
+			<option value="">Input</option>
+			<option value="">Output</option>
+			</select> </td>
+		</tr>
+		<tr>
+			<td><label for="Branch">Message Type</label></td>
+			<td><select class="dropdown">
+			<option>Select</option>
+			<option value="">Input</option>
+			<option value="">Output</option>
+			</select> </td>
+		</tr>
+	</table>
+ </fieldset>
+ <br>
+ <fieldset>
+	<legend style="text-align:center"><strong>Reciever Details</strong></legend>
+	<table align="center">
+			<tr>
+				<td><label for="recieveBank">Bank Name</label></td>
+				<td><input type="text" name="accoutno"></td>
+			</tr>
+			<tr>
+				<td> <label for="RCountryName">Country Name </label></td>
+				<td >   <input type="text" name="amount"></td>
+			</tr>
+			<tr>
+				<td>  <label for="RCityName">City</label></td>
+				<td>  <select>
+					<option value="">f</option>
+					</select>  </td>
+			</tr>
+				
+			<tr>
+				<td>  <label for="RBranch"> Branch   </label></td>
+				<td>  <select>
+				<option value="">f</option>
+				</select> </td>
+			</tr>
+			<tr>
+				<td>  <label for="msgPriority"> Message Priority</label></td>
+				<td>  <select>
+				<option value="">f</option>
+				</select> </td>
+			</tr>
+		</table>
+ </fieldset>
+ <br>
+	<div class="wrapper">
+		<button class="button"><a href="C:\Users\Kanwal\Downloads\SwiftUI\SwiftText.html"><span>Proceed</span></a></button>
+	</div>
+</div>
+	
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+
+squid:S00116"XRename this field "trailer_block" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊšÕÌşÿÿÿÿ8öŸãÒß,H€	
+}squid:S00117,"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îû‚Éùÿÿÿÿ8ó££ãá,Hœ
+wsquid:S001178"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØÒ«Z8ó££ãá,H
+squid:S1488_"[Immediately return this expression instead of assigning it to the temporary variable "mav".(êô§ïøÿÿÿÿ8…×á,H¤
+
+|squid:S00116"URename this field "app_header" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áñÃşÿÿÿÿ8öŸãÒß,H	
+wsquid:S00116"VRename this field "user_header" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™™Ÿ_8öŸãÒß,HŒ	
+msquid:S1132;"GMove the "I" string literal on the left side of this string comparison.(ˆßŠ—ıÿÿÿÿ8ó££ãá,H›
+}squid:S00117-"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â‹ÉÈùÿÿÿÿ8ó££ãá,H
+wsquid:S00117'"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï×°8Ï±¬áá,H¯
+xsquid:S001179"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø“ÑÍ8ó££ãá,HŸ
+†squid:UselessImportCheck"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8ıì¬áá,H°
+ysquid:S00116"WRename this field "basic_header" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Şû’Â8öŸãÒß,H†	
+qsquid:CommentedOutCodeLine)"<This block of commented-out lines of code should be removed.(ï×„‡ıÿÿÿÿ8ó££ãá,H˜
+xsquid:S00117E"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Âªğ8ó££ãá,H 
+wsquid:S00116"URename this field "text_block" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áø¼8öŸãÒß,Hˆ	
+lsquid:CommentedOutCodeLineP"<This block of commented-out lines of code should be removed.(«½µ†8Õ»­ãá,H¢
