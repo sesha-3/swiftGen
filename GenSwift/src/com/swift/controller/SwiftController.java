@@ -3,7 +3,9 @@
  */
 package com.swift.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Iterator;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -26,7 +28,7 @@ public class SwiftController {
 	String basic_header = "{1:";
 	String user_header = "{2:";
 	String app_header = "{3:";
-	String text_block = "{4:\n-}";
+	String text_block = "{4:";
 	String trailer_block = "{5:";
 
 	@RequestMapping(value="/Swift-Text",
@@ -38,8 +40,6 @@ public class SwiftController {
 		String swiftcode = formData.getFirst("swiftcode");
 		String Swiftcode = formData.getFirst("Swiftcode");
 		ModelAndView mav = new ModelAndView();
-/*		System.out.println(swiftcode);
-		System.out.println(Swiftcode);*/
 		//BasicHeaderBlock starts here
 		String session_number = gen.generateNumber(4);
 		String sequence_number = gen.generateNumber(6);
@@ -77,10 +77,10 @@ public class SwiftController {
 		trailer_block = trailer_block + "{CHK:" + chksum + "}}";
 		//TrailerBlock ends here
 		
-/*		System.out.print(basic_header + app_header);
-		System.out.print(user_header);
-		System.out.print(text_block);
-		System.out.print(trailer_block);*/
+		System.out.println(basic_header);
+		System.out.println(user_header);
+		System.out.println(app_header);
+		System.out.println(trailer_block);
 		
 		mav.setViewName("Swift-Text");
 		return mav;
@@ -92,8 +92,24 @@ public class SwiftController {
 	
 	ModelAndView generateBody(@RequestBody MultiValueMap<String,String> formData){
 		
+		   Iterator<String> it = formData.keySet().iterator();
+		   while(it.hasNext()){
+	           String theKey = (String)it.next();
+	           formData.getFirst(theKey);
+	       }
 		ModelAndView mav = new ModelAndView();
+		text_block = text_block + ":16R:GENL:20C::SEME//"+formData.getFirst("20C")
+					+ ":98C::PREP//"+ gen.generateDate() + gen.generateTime() + ":16S:GENL" +
+				      ":98A::SETT//"+gen.generateDate()+ "::35B:ISIN" + formData.getFirst("35B") + ":16S:TRADDET"
+				      + ":16R:FIAC" + ":36B::SETT//UNIT/"+formData.getFirst("36B")
+				      + ":97A::SAFE//" + formData.getFirst("97A") + ":16S:FIAC"
+				      + ":16R:SETDET:22F::"+formData.getFirst("22Fqual") + "//"+formData.getFirst("22Fcode")
+				      + ":16R:SETPRTY:95A::"+formData.getFirst("95A")+"/"+formData.getFirst("partyval") + ":16S:SETPRTY"
+				      + ":16S:SETDET\n-}";
+		mav.addObject(text_block);
 		
+		String swiftt = basic_header + "\n" + user_header + "\n" + app_header + "\n" + text_block + "\n" + trailer_block;
+		System.out.println(swiftt);
 		
 		return mav;
 		
