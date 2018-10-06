@@ -17,7 +17,7 @@
         <!--  the returned show object.."show" is added with these suff and pref property.. -->
         <!-- Now the show has become like "/WEB-INF/jsp/show.jsp" it is inn this location -->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
         </bean>
         

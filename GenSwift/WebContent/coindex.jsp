@@ -8,6 +8,8 @@
 	String flag = request.getParameter("flag");
 	String str = "";
 	String bnk = request.getParameter("bank");
+	JSONArray jsonArray = new JSONArray();
+	/* response.Header().Set("Access-Control-Allow-Origin", "*"); */
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","hr","hr");
@@ -40,10 +42,10 @@
             }
             else{
             	if(flag != null){
-                	str = "select code from message_tag_table where tag_id='22F'";
+                	str = "select distinct(code) from message_tag_table where tag_id='22F'";
                 }
                 else{
-                	str = "select qualifier from message_tag_table where tag_id='"+ val +"'";
+                	str = "select distinct(qualifier) from message_tag_table where tag_id='"+ val +"'";
                 }
             }
         
@@ -51,7 +53,7 @@
             PreparedStatement ps=con.prepareStatement(str);
             //ps.setString(1,s);
             //if(type.equals("branch"))	System.out.println(str);
-            JSONArray jsonArray = new JSONArray();
+            
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
 	                //out.print(rs.getString(1)+" ");
@@ -65,10 +67,11 @@
 		            	}
 	            	}
             }
-            out.print(jsonArray);
+            
             con.close();
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        out.print(jsonArray);
 %>

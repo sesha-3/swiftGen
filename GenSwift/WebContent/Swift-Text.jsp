@@ -2,65 +2,66 @@
 <head>
   <meta charset="UTF-8">
   <title>SwiftText</title>
-      <link rel="stylesheet" href="../resources/style/style.css">
-      
+      <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/style/style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
 
-	function update(e){
-	    //var v=e.value;
-	    var url="../coindex.jsp?msg=1&val="+e.id;
-	    if(e.id == "22Fcode"){
-		    var url = "../coindex.jsp?msg=1&val=22F&flag=1";
-		    }
+  	var request;
+
+  	function updatemsg(){
+  	  	
+		    var url="${pageContext.servletContext.contextPath}/coindex.jsp";
+		    var dataA, dataB, dataC, dataD;
+		    var msg = 1;
+		    var vala = "23G";
+		    var valb = "22Fqual";
+		    var valc = "22Fcode";
+		    var vald = "95a";
+		    var flag = 1;
+		    
+	    	dataA = {msg:msg,val:vala};
+	    	dataB = {msg:msg,val:"22F"};
+	    	dataC = {msg:msg,val:"22F", flag:flag};
+	    	dataD = {msg:msg,val:vald};
+	    	
+		    $.get(url,dataA, function(dataA, status){
+				getinfo(vala,dataA);
+	        }, "json");
+		    $.get(url,dataB, function(dataB, status){
+				getinfo(valb,dataB);
+	        }, "json");
+		    $.get(url,dataC, function(dataC, status){
+				getinfo(valc,dataC);
+	        }, "json");
+		    $.get(url,dataD, function(dataD, status){
+				getinfo(vald,dataD);
+	        }, "json");
+
+  	  	}
 	
-	    request=new XMLHttpRequest();
-	
-	    try {
-	        request.onreadystatechange=getInfo(e.id);
-	        request.open("GET",url,true);
-	        request.send();
-	    }
-	    catch(e) {
-	        alert("Unable to connect to server");
-	    }
-	}
-	
-	function getInfo(e){
-		//alert(e);
-	    var sel = document.getElementById(e);
-	    while (sel.hasChildNodes()) {  
-	        sel.removeChild(sel.firstChild);
-	    }
+	function getinfo(id, val){
+		
+	    var sel = document.getElementById(id);
+		var i;
 	    var opt = document.createElement("option");
-	    opt.text = "Select any one";
-	    sel.add(opt);
-	    //alert("in dad");
-		if(request.readyState==4){
-			alert("in d");
-			var val = JSON.parse(request.responseText);
-			var i;
+	    
+		//alert(id);
 	        for(i in val){
-		        alert("in for");
 	            var option = document.createElement("option");
-	            if(e.equals("22Fcode")){
+	            if(id == "22Fcode"){
 	                option.text = val[i].code;
-                	alert(e);
 	            }
 	            else{
 	                option.text = val[i].qualifier;
-	                alert(e);
-	                alert(option.text);
 	            }
-	            
+	            //alert(option.text);
 	            sel.add(option);
-	           }
-		}
-		//alert("in mom");
+	          }
 	}
   </script>
 
 </head>
-<body>
+<body onload = "updatemsg()">
 <div class="container">
 	<div class="bird-container bird-container--one">
 		<div class="bird bird--one"></div>
@@ -88,11 +89,11 @@
 </div> -->
 
 <div class="img2">
-	<img id="image" src="../resources/scblogo.jpg" />
+	<img id="image" src="${pageContext.servletContext.contextPath}/resources/img2.jpg" />
 </div>
 
 <div class="formText">
-<form method="post" action="test/Swift-Text" enctype="application/x-www-form-urlencoded">
+<form method="post" action="Swift-Output" enctype="application/x-www-form-urlencoded">
 	<fieldset name="name" >
 	  <legend style="text-align:center"><strong>General Information</strong></legend>
 	    <table>
@@ -102,7 +103,7 @@
 	      </tr>
 	      <tr>
 	        <td> <label for="23G"> Function of Message   </label><br/> </td>
-	         <td>  <select name="23G" id="23G" onclick="update(this)" required>
+	         <td>  <select name="23G" id="23G" required>
 	        <option value="">Function</option>
 	        </select> </td>
 	      </tr>
@@ -145,11 +146,11 @@
 	    <legend style="text-align:center"><strong>Settlement Details</strong></legend>
 	      <table>
 	        <tr>
-	          <td>  <label for="22F">Indicator</label> </td>
-	           <td>  <select id = "22F" name = "22Fqual" onclick="update(this)" required>
+	          <td>  <label for="22Fqual">Indicator</label> </td>
+	           <td>  <select id = "22Fqual" name = "22Fqual" required>
 	        <option value="">Qualifier</option>
 	        </select> </td>
-			 <td>  <select id = "22Fcode" name = "22Fcode" onclick="update(this)" required>
+			 <td>  <select id = "22Fcode" name = "22Fcode" required>
 	        <option value="">Code</option>
 	        </select> </td>
 	      </table>
@@ -159,8 +160,8 @@
 	    <legend style="text-align:center"><strong>Settlement Party</strong></legend>
 	      <table>
 	        <tr>
-	          <td>  <label for="95A">Party</label> </td>
-	           <td>  <select id = "95A" name = "95A" onclick="update(this)" required>
+	          <td>  <label for="95a">Party</label> </td>
+	           <td>  <select id = "95a" name = "95A" required>
 	        <option value="">Party</option>
 	        </select> 
 			</td>
