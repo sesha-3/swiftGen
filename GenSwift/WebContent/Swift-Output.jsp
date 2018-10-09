@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title> OUTPUT </title>
 <style>
 	body, html {
 	    height: 100%;
 	    margin: 0;
 	}
 	.bgimg {
-	    background-image: url('resource/scb1.jpg');
+	    background-image: url('${pageContext.servletContext.contextPath}/resources/img2.jpg');
 	    height: 100%;
 	    background-position: center;
 	    background-size: cover;
-	    color: white;
+	    color: black;
 	    font-family: "Courier New", Courier, monospace;
 	    font-size: 15px;
 	}
 	.topleft {
 	    position: absolute;
 	    top: 5px;
-	    left: -10px;
+	    right: 10px;
 	}
-	body div .middle {
+	.middle {
 	    position: absolute;
 	    top: 10%;
 	    left: 50%;
 	    transform: translate(-50%, -50%);
 	    text-align: center;
 	}
-	hr {
-	    margin: auto;
-	    width: 100%;
-	}
-	div .transbox {
+	.transbox {
 	  margin-left:30%;
 	  margin-top:20%;
 	  background-color: #ffffff;
@@ -43,47 +40,31 @@
 	  padding: 50px;
 	  height: 40%;
 	}
-	div .transbox p {
-	  margin: 5%;
-	  font-weight: bold;
-	  color: #000000;
+	.central {
+		margin-left: 20%;	
 	}
-	div .transbox button {
-		
-	}
-</style>
-<script type="text/javascript" >
+	div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  padding: 10% 10% 10% 10%;
+  box-shadow: 10px 10px 5px #999;
+}
 
-	function download(text) {
-		var filename="swift.txt"
-		  var pom = document.createElement('a');
-		  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-		  pom.setAttribute('download', filename);
-		
-		  pom.style.display = 'none';
-		  document.body.appendChild(pom);
-		
-		  pom.click();
-		  
-		  document.body.removeChild(pom);
-	}
-</script>
+</style>
 </head>
 <body class="bgimg">
-	<div>
 		<div class="topleft">
-		 <img src="resources/scblogo.png" alt="logo" style="width:130px;height:130px;">
+		 <img src="${pageContext.servletContext.contextPath}/resources/scblogo.png" alt="logo" style="width:130px;height:130px;">
 		</div>
-	  
-		<div class="middle">
-		  <h1>${swiftt}</h1>
-		</div>
-		<div class="transbox">
-		  	<form  onsubmit="download( this['msg'].value)" >
-		  	<textarea name="msg">swift</textarea><h2>nothing</h2>
-		    <input type="submit" name="button1" value="Download" />
-			</form>
-		</div>
-	</div>
+		<div class = "transbox">
+		<div class = "central">
+			  <h1>YOUR SWIFT MESSAGE HAS BEEN GENERATED AND DOWNLOADED SUCCESSFULLY.</h1>
+			  <h3>Check the swift code in the following directory-</h3><br/><h3>
+			   E:\JAVA_SOFTWARE\eclipse\</h3><br/>
+			  </div>
+			  </div>
 </body>
 </html>

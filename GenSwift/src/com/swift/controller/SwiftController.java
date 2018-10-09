@@ -4,7 +4,11 @@
 package com.swift.controller;
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.ModelAndView;
+
+import com.swift.service.SwiftService;
 
 /**
  * @author int-Elligence
@@ -25,11 +31,17 @@ public class SwiftController {
 	
 	AutoGenString gen = new AutoGenString();
 	
+	
+	SwiftService serve = new SwiftService();
+	
+	
+	
 	String basic_header = "{1:";
 	String user_header = "{2:";
 	String app_header = "{3:";
 	String text_block = "{4:";
 	String trailer_block = "{5:";
+	List<String> codes = new ArrayList<>();
 
 	@RequestMapping(value="/Swift-Text",
             method=RequestMethod.POST,
@@ -77,11 +89,11 @@ public class SwiftController {
 		trailer_block = trailer_block + "{CHK:" + chksum + "}}";
 		//TrailerBlock ends here
 		
-		System.out.println(basic_header);
+/*		System.out.println(basic_header);
 		System.out.println(user_header);
 		System.out.println(app_header);
 		System.out.println(trailer_block);
-		
+		*/
 		mav.setViewName("Swift-Text");
 		return mav;
 	}
@@ -106,10 +118,29 @@ public class SwiftController {
 				      + ":16R:SETDET:22F::"+formData.getFirst("22Fqual") + "//"+formData.getFirst("22Fcode")
 				      + ":16R:SETPRTY:95A::"+formData.getFirst("95A")+"/"+formData.getFirst("partyval") + ":16S:SETPRTY"
 				      + ":16S:SETDET\n-}";
-		mav.addObject(text_block);
+		//mav.addObject(text_block);
 		
 		String swiftt = basic_header + "\n" + user_header + "\n" + app_header + "\n" + text_block + "\n" + trailer_block;
-		System.out.println(swiftt);
+		
+/*		codes.add(basic_header);
+		codes.add(user_header);
+		codes.add(app_header);
+		codes.add(text_block);
+		codes.add(trailer_block);
+		serve.getBanks(codes);*/
+		
+		String fileName = gen.generateString(7);
+		GenFile gef = new GenFile(swiftt,fileName);
+		try{
+			gef.writeToFile();
+		}
+		catch(IOException i){
+			System.out.println(i);
+		}
+		mav.setViewName("Swift-Output");
+		//mav.addObject("swift",swiftt);
+		mav.addObject("data", fileName);
+		//System.out.println(swiftt);
 		
 		return mav;
 		
